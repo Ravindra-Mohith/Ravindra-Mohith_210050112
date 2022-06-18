@@ -11,4 +11,4 @@ We can post our doubt by giving our credentials and by stating the subject .It c
 !!Note: No Bootstrap included!!
 every front end thing is made from scratch.
 
-This work is done by me,Pamba Ravindra Mohith(210050112), honestly without copying any website or any other student's work.You cannot find these webs even in online. 
+This work is done by me,Pamba Ravindra Mohith(210050112), honestly,spent Literally 4 complete days, without copying any website or any other student's work.You cannot find these webs even in online. 
