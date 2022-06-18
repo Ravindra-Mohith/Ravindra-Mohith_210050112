@@ -1,0 +1,406 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translateX(10px);
+        /* we can even add rotate(x deg)
+        like 
+        transform: translateX(-10px) rotate(120deg); */
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes moveleft {
+    0% {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+@keyframes moveUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes integrate {
+    0% {
+        opacity: 0;
+        letter-spacing: 10px;
+    }
+
+    100% {
+        opacity: 1;
+        letter-spacing: 1px;
+    }
+}
+
+body {
+    padding: 30px;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+}
+
+.heading {
+    text-transform: uppercase;
+    color: white;
+    /*to avoid shaking after animations*/
+    backface-visibility: hidden;
+    margin-bottom: 60px;
+}
+
+.heading .main-heading {
+    display: block;
+    /*for line breaking, and for animations(the whole block can move if its block, whole line cant move(inline)*/
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 60px;
+    letter-spacing: 35px;
+    animation: moveInLeft 2s;
+}
+
+.heading .sub-heading {
+    display: block;
+    font-family: "Lato", sans-serif;
+    letter-spacing: 19.4px;
+    font-size: 20px;
+    font-weight: 700;
+    animation: moveInRight 2s;
+}
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    color: #777;
+    background-color: white;
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 15px 40px;
+    border-radius: 100px;
+    animation: moveUp 2s;
+    transition: all 0.2s;
+    position: relative;
+    /*for btn::after positioning*/
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn::after {
+    /* this is a child button of .btn(we can set it behind by z-index -1, above by z-index 1) */
+    content: "";
+    /*content dosent matter but its comulsory to mention*/
+    display: inline-block;
+    background-color: white;
+    /*as parent's*/
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    /*positioning*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    transition: all 0.4s;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.header {
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(./img/hero.jpg);
+    background-size: cover;
+    background-position: top;
+    /* background-position: bottom; */
+    /* height: 50vh; */
+    height: 85vh;
+    /* setting position to relative because the child element(position:absolute;) looks for the parent's reference for positioning */
+    position: relative;
+}
+
+.header .logo-class {
+    position: absolute;
+    left: 40px;
+    top: 40px;
+}
+
+.header .logo {
+    height: 35px;
+    /* width will be automatically scaled according to the image by browser if we set a height to it. and vice-versa */
+}
+
+.header .top {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /*for button centering*/
+    backface-visibility: hidden;
+}
+
+nav {
+    text-transform: uppercase;
+    font-size: medium;
+    padding: 15px 10px;
+    color: aliceblue;
+}
+
+.navsection .nav-items {
+    display: inline-block;
+    color: white;
+    float: right;
+    margin-left: 50px;
+    transition: all 2s;
+    animation: moveleft 3s;
+}
+
+.navsection .nav-items:nth-of-type(2) {
+    animation: moveleft 3s 0.5s;
+}
+
+.navsection .nav-items:nth-of-type(3) {
+    animation: moveleft 3s 1s;
+}
+
+.navsection .nav-items:nth-of-type(4) {
+    animation: moveleft 10s 3s;
+}
+
+.navsection .nav-items:hover {
+    cursor: pointer;
+}
+
+.navsection .nav-items span {
+    margin-right: 10px;
+    background-color: white;
+    color: rgb(40, 180, 133);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+main {
+    padding: 100px;
+    background-color: rgb(239, 238, 238);
+    position: relative;
+}
+
+.about-heading {
+    display: flex;
+    justify-content: center;
+    letter-spacing: 1px;
+    word-spacing: 15px;
+    text-transform: uppercase;
+    background-image: linear-gradient(to right, rgb(126, 213, 111), rgb(40, 180, 133));
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 50px;
+    animation: integrate 2s;
+}
+
+.about-image {
+    max-width: 300px;
+    margin-bottom: 10px;
+    transition: all .4s;
+}
+
+.about-image:hover {
+    max-width: 350px;
+    border: 10px solid rgb(40, 180, 133);
+    padding: 4px;
+}
+
+.about-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-text {
+    margin: 50px;
+}
+
+.about-sub-heading {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: black;
+}
+
+.about-content {
+    padding: 10px 10px;
+}
+
+.secondary-button {
+    border: none;
+    color: rgb(40, 180, 133);
+    font-weight: 700;
+    transition: all .4s;
+}
+
+.secondary-button:hover {
+    transform: translateY(-3px);
+    background-color: rgb(40, 180, 133);
+    color: white;
+    padding: 7px;
+    font-weight: 700;
+    border-radius: 2px;
+}
+
+section {
+    background-image: linear-gradient(to right, rgb(126, 213, 111, 0.8), rgb(40, 180, 133, 0.8)), url(img/nat-6.jpg);
+    padding: 30px;
+}
+
+.user.images {
+    max-width: 200px;
+    border-radius: 50%;
+}
+
+.feedback {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row;
+    padding: 10px 5%;
+    justify-content: space-around;
+    margin: 30px 100px;
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+    box-shadow: 10px 10px grey;
+    animation: moveUp 2s;
+}
+
+.feedback:nth-of-type(2) {
+    animation: moveUp 3s;
+}
+
+.feedback:last-child {
+    animation: moveUp 4s;
+}
+
+.feedback-heading {
+    text-transform: uppercase;
+    font-size: 17px;
+}
+
+.feedback-content {
+    padding: 0 10px;
+}
+
+.feedback:first-child {
+    margin-top: 100px;
+}
+
+.feedback:last-child {
+    margin-bottom: 100px;
+}
+
+.feedback-main-heading {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+footer {
+    background-color: rgb(60, 60, 60);
+    color: rgb(198, 198, 198);
+    display: flex;
+    flex: row wrap;
+    justify-content: space-between;
+}
+
+.footer-nav {
+    display: flex;
+    flex: row wrap;
+    justify-content: space-between;
+    padding: 50px 20px;
+    margin-right: 20px;
+}
+
+.footer-nav-items {
+    display: inline-block;
+    margin-right: 30px;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.footer-nav-items:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.copyrights {
+    font-size: 10px;
+    margin-top: 10px;
+    margin-bottom: none;
+    text-align: right;
+    display: flex;
+    flex-direction: column-reverse;
+}

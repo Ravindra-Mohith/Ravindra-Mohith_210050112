@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fascinate&family=Kdam+Thmor+Pro&family=Lato:wght@300;400;700;900&family=Open+Sans:ital,wght@1,700&display=swap"
+        rel="stylesheet">
+    <title>Doubtnut | Home</title>    
+</head>
+
+<body>
+    {{>navbar}}
+    <br>
+    <span id="d">doubts?</span><br>
+    <div class="heading">dump your doubts here and get solved as fast as possible
+        freely.</div>
+    <div class="form">
+        <form action="/registration" method="post" class="FOrm">
+            <div class="Form">
+                <div class="form-item">
+                    <input type="text" id="name" name="firstname" placeholder="Name*">
+                </div>
+                <div class="form-item">
+                    <input type="email" id="email" name="email" placeholder="Email*">
+                </div>
+                <div class="form-item">
+                    <input type="text" id="s" name="subject" placeholder="Subject*">
+                </div>
+                <div class="form-item">
+                </div>
+            </div>
+            <input type="text" id="doubt" class="form-item D" name="doubt" placeholder="DOUBT*">
+            <br><button type="submit">Post</button>
+        </form>
+    </div>
+</body>
+
+</html>
